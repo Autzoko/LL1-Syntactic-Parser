@@ -76,10 +76,6 @@ void Parser::findFirst(char symbol, vector<char> &firstset)
 		auto iter = syntax.find(symbol);
 		for(vector<string>::iterator i = iter->second.begin(); i != iter->second.end(); i++)
 		{
-			/*for(string::iterator j = i->begin(); j != i->end(); j++)
-			{
-				findFirst(*j, firstset);
-			}*/
 			string tmp = *i;
 			findFirst(tmp[0], firstset);
 		}
@@ -131,4 +127,27 @@ void Parser::printFirstSets()
 		tmp.push_back(tab);
 		cout << tmp << endl;
 	}
+}
+
+void Parser::findFollow(char symbol, vector<char> &followset)
+{
+	if(FirstSets.empty())
+	{
+		createFirstSet();
+	}
+
+	if(symbol == 'S')
+		followset.push_back('#');
+	
+	vector<string> pset;
+	for(map<char, vector<string>>::iterator iter = syntax.begin(); iter != syntax.end(); iter++)
+	{
+		string::size_type idx;
+		idx = iter->second[0].find(symbol);
+		if(idx == string::npos)
+			continue;
+		else
+			pset.push_back(iter->second[0]);
+	}
+	
 }
