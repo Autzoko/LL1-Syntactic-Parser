@@ -93,3 +93,42 @@ void Parser::findFirst(char symbol, vector<char> &firstset)
 		return;
 	}
 }
+
+void Parser::createFirstSet()
+{
+	vector<char> tmpSet;
+	for(vector<char>::iterator iter = Vn.begin(); iter != Vn.end(); iter++)
+	{
+		tmpSet.clear();
+		findFirst(*iter, tmpSet);
+		FirstSets.insert(make_pair(*iter, tmpSet));
+	}
+}
+
+void Parser::printFirstSets()
+{
+	cout << "Nonterminal\t\t\tFirstSet\t\t\t" << endl; 
+	string tmp;
+	char lb = '{', rb = '}', tab='\t', pin = ',';
+	for(map<char, vector<char>>::iterator i = FirstSets.begin(); i != FirstSets.end(); i++)
+	{
+		tmp.clear();
+		tmp.push_back(i->first);
+		tmp.push_back(tab);
+		tmp.push_back(tab);
+		tmp.push_back(tab);
+		tmp.push_back(tab);
+		tmp.push_back(lb);
+		for(vector<char>::iterator j = i->second.begin(); j != i->second.end(); j++)
+		{
+			tmp.push_back(*j);
+			tmp.push_back(pin);
+		}
+		tmp.pop_back();
+		tmp.push_back(rb);
+		tmp.push_back(tab);
+		tmp.push_back(tab);
+		tmp.push_back(tab);
+		cout << tmp << endl;
+	}
+}

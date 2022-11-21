@@ -23,6 +23,8 @@ public:
 	bool isVt(char symbol);
 
 	void findFirst(char symbol, vector<char> &firstset);
+	void createFirstSet();
+	void printFirstSets();
 	map<char, vector<char>> follow(char symbol);
 	map<char, vector<char>> select(char symbol);	
 
