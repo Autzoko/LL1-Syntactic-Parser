@@ -1,43 +1,48 @@
 #include "../lib/parser.h"
+#include <map>
+#include <vector>
+#include <string>
+#include <algorithm>
+#include <iostream>
 using namespace std;
 
 Parser::Parser()
 {
 	vector<string> _S;
 	_S.push_back("V=E");
-	syntax.insert(make_pair<char, vector<string>>('S', _S));
+	syntax.insert(make_pair('S', _S));
 
 	vector<string> _E;
 	_E.push_back("TR");
-	syntax.insert(make_pair<char, vector<string>>('E', _E));
+	syntax.insert(make_pair('E', _E));
 
 	vector<string> _R;
 	_R.push_back("ATR");
 	_R.push_back("e");
-	syntax.insert(make_pair<char, vector<string>>('R', _R));
+	syntax.insert(make_pair('R', _R));
 
 	vector<string> _T;
 	_T.push_back("FP");
-	syntax.insert(make_pair<char, vector<string>>('T', _T));
+	syntax.insert(make_pair('T', _T));
 
 	vector<string> _P;
 	_P.push_back("MFP");
 	_P.push_back("e");
-	syntax.insert(make_pair<char, vector<string>>('P', _P));
+	syntax.insert(make_pair('P', _P));
 
 	vector<string> _A;
 	_A.push_back("+");
 	_A.push_back("-");
-	syntax.insert(make_pair<char, vector<string>>('A', _A));
+	syntax.insert(make_pair('A', _A));
 
 	vector<string> _M;
 	_M.push_back("*");
 	_M.push_back("/");
-	syntax.insert(make_pair<char, vector<string>>('M', _M));
+	syntax.insert(make_pair('M', _M));
 
 	vector<string> _V;
 	_V.push_back("i");
-	syntax.insert(make_pair<char, vector<string>>('V', _V));
+	syntax.insert(make_pair('V', _V));
 
 	Vn = {'S', 'E', 'R', 'T', 'P', 'F', 'A', 'M', 'V'};
 	Vt = {'=', 'e', '(', ')', 'i', '+', '-', '*', '/'};
@@ -66,7 +71,7 @@ int Parser::findFirst(char symbol, vector<char> &firstset)
 		auto iter = syntax.find(symbol);
 		for(vector<string>::iterator i = iter->second.begin(); i != iter->second.end(); i++)
 		{
-			for(string::iterator j = *i.begin(); j != *i.end(); j++)
+			for(string::iterator j = i->begin(); j != i->end(); j++)
 			{
 				findFirst(*j, firstset);
 			}
@@ -74,7 +79,7 @@ int Parser::findFirst(char symbol, vector<char> &firstset)
 	}
 	else if(isVt(symbol))
 	{
-		firstset.push_front(symbol);
+		firstset.push_back(symbol);
 	}
 	else
 	{

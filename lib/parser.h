@@ -1,8 +1,12 @@
 #ifndef _PARSER_H_
 #define _PARSER_H_
 
-#include "base.h"
+#include <map>
+#include <vector>
+#include <string>
+#include <algorithm>
 
+using namespace std;
 
 class Parser
 {
@@ -18,7 +22,7 @@ public:
 	bool isVn(char symbol);
 	bool isVt(char symbol);
 
-	int findFirst(char symbol);
+	int findFirst(char symbol, vector<char> &firstset);
 	map<char, vector<char>> follow(char symbol);
 	map<char, vector<char>> select(char symbol);	
 

@@ -1,7 +1,6 @@
 #ifndef _SYNTAX_READER_H_
 #define _SYNTAX_READER_H_
 
-#include "base.h"
 
 class SyntaxReader()
 {
