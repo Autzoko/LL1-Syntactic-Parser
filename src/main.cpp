@@ -7,7 +7,7 @@ int main()
 {
 	Parser parser;
 	vector<char> s;
-	parser.findFirst('S', s);
+	parser.findFirst('E', s);
 	for(vector<char>::iterator i = s.begin(); i != s.end(); i++)
 	{
 		cout << *i << endl;

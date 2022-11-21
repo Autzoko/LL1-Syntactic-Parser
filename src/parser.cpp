@@ -30,6 +30,11 @@ Parser::Parser()
 	_P.push_back("e");
 	syntax.insert(make_pair('P', _P));
 
+	vector<string> _F;
+	_F.push_back("(E)");
+	_F.push_back("i");
+	syntax.insert(make_pair('F', _F));
+
 	vector<string> _A;
 	_A.push_back("+");
 	_A.push_back("-");
@@ -64,17 +69,19 @@ bool Parser::isVt(char symbol)
 	return false;
 }
 
-int Parser::findFirst(char symbol, vector<char> &firstset)
+void Parser::findFirst(char symbol, vector<char> &firstset)
 {
 	if(isVn(symbol))
 	{
 		auto iter = syntax.find(symbol);
 		for(vector<string>::iterator i = iter->second.begin(); i != iter->second.end(); i++)
 		{
-			for(string::iterator j = i->begin(); j != i->end(); j++)
+			/*for(string::iterator j = i->begin(); j != i->end(); j++)
 			{
 				findFirst(*j, firstset);
-			}
+			}*/
+			string tmp = *i;
+			findFirst(tmp[0], firstset);
 		}
 	}
 	else if(isVt(symbol))
@@ -83,6 +90,6 @@ int Parser::findFirst(char symbol, vector<char> &firstset)
 	}
 	else
 	{
-		return -1;
+		return;
 	}
 }

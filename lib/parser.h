@@ -22,7 +22,7 @@ public:
 	bool isVn(char symbol);
 	bool isVt(char symbol);
 
-	int findFirst(char symbol, vector<char> &firstset);
+	void findFirst(char symbol, vector<char> &firstset);
 	map<char, vector<char>> follow(char symbol);
 	map<char, vector<char>> select(char symbol);	
 
