@@ -54,7 +54,7 @@ int SyntaxReader::syntaxAnalyze()
 				right.clean();
 				continue;
 			}
-			syntaxMap.insert(pair<tmp_left, tep_right>);
+			syntaxMap.insert(pair<tmp_left, tmp_right>);
 		}
 	}
 }
