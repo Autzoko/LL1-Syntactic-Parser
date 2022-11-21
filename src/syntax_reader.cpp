@@ -3,7 +3,7 @@ using namespace std;
 
 SyntaxReader::SyntaxReader(string filename)
 {
-	this.srcFilename = filename;
+	srcFilename = filename;
 }
 
 int SyntaxReader::readLines()
