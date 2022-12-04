@@ -16,6 +16,7 @@ private:
 	vector<char> Vt;
 
 	map<char, vector<char>> FirstSets;
+	map<char, vector<char>> FollowSets;
 public:
 	Parser();
 
@@ -27,8 +28,8 @@ public:
 	void printFirstSets();
 
 	void findFollow(char symbol, vector<char> &followset);	
-
-
+	void createFollowSet();
+	void printFollowSets();
 
 };
 

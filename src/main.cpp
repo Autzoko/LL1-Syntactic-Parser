@@ -8,5 +8,6 @@ int main()
 	Parser parser;
 	parser.createFirstSet();
 	parser.printFirstSets();
-	return 0;
+	parser.createFollowSet();
+	parser.printFollowSets();
 }
