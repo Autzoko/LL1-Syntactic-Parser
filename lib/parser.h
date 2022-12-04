@@ -17,6 +17,17 @@ private:
 
 	map<char, vector<char>> FirstSets;
 	map<char, vector<char>> FollowSets;
+
+	string text;
+	string abstractText;
+
+	struct parserTable
+	{
+		char rowElement;
+		char lineElement;
+		char* findTarget(char rowEle, char lineEle);
+		string target;
+	} table;
 public:
 	Parser();
 
@@ -31,6 +42,13 @@ public:
 	void createFollowSet();
 	void printFollowSets();
 
+	void createParserTable(struct parserTable &table);
+	void printParserTable();
+
+	char* findTarget(char rowEle, char lineEle);
+
+	void textAbstract();
+	void analyzeStack();
 };
 
 #endif
